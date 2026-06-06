@@ -1,0 +1,26 @@
+# Dependências (Nunca envie a pasta node_modules)
+node_modules/
+
+# Banco de Dados Local (Evita enviar as mensagens reais dos alunos para o Git)
+*.db
+*.db-journal
+
+# Logs e arquivos de erro
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Arquivos de sistema (Mac e Windows)
+.DS_Store
+Thumbs.db
+
+# Configurações de editores (VS Code, WebStorm, etc)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de variáveis de ambiente (Caso você use um arquivo .env no futuro)
+.env

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"><title>Mural do Amor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>❤️ Correio Elegante ❤️</h1>
+    <div class="container">
+        <form action="/enviar" method="POST">
+            <input type="text" name="nome" placeholder="Seu Nome Completo" required>
+            <input type="text" name="turma" placeholder="Sua Turma" required>
+            <textarea name="mensagem" rows="4" placeholder="Sua mensagem..." required></textarea>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </div>
+    <h2>Mural Público</h2>
+    <div id="mural" class="mural"></div>
+    <p><a href="/login.html" style="color:#ffb3c1; text-decoration:none;">Painel Admin</a></p>
+    <script>
+        fetch('/mensagens-aprovadas').then(r => r.json()).then(data => {
+            const mDiv = document.getElementById('mural');
+            data.forEach(m => { mDiv.innerHTML += `<div class="card"><p>"${m.mensagem}"</p><span>- Anônimo</span></div>`; });
+        });
+    </script>
+</body>
+</html>

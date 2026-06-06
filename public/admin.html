@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"><title>Moderação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Moderação de Mensagens</h1>
+    <nav>
+        <a href="/cadastro.html"><button>Cadastrar Novos Admins</button></a>
+        <a href="/logout"><button class="btn-voltar">Sair</button></a>
+    </nav>
+    <div id="lista-admin"></div>
+
+    <script>
+        function carregar() {
+            fetch('/admin/mensagens').then(r => r.json()).then(data => {
+                const lista = document.getElementById('lista-admin');
+                lista.innerHTML = '';
+                data.forEach(m => {
+                    lista.innerHTML += `
+                        <div class="admin-card">
+                            <p><strong>De:</strong> ${m.nome} (${m.turma}) | <strong>Status:</strong> ${m.status}</p>
+                            <p><strong>Mensagem:</strong> ${m.mensagem}</p>
+                            <button class="btn-aprovar" onclick="acao(${m.id},'aprovar')">Aprovar</button>
+                            <button class="btn-excluir" onclick="acao(${m.id},'deletar')">Excluir</button>
+                        </div>`;
+                });
+            });
+        }
+        function acao(id, tipo) {
+            fetch('/admin/acao', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({id, acao: tipo})
+            }).then(carregar);
+        }
+        carregar();
+    </script>
+</body>
+</html>
