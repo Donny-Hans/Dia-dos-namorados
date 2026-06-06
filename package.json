@@ -1,17 +1,27 @@
 {
   "dependencies": {
+    "@prisma/client": "^6.19.3",
     "body-parser": "^2.2.2",
+    "cookie-parser": "^1.4.7",
     "express": "^5.2.1",
-    "express-session": "^1.19.0",
-    "node": "^26.3.0",
-    "server.js": "^1.0.0",
-    "sqlite3": "^6.0.1"
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "prisma": "^6.19.3"
   },
   "name": "site-dia-dos-namorados",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "build": "prisma generate",
+    "postinstall": "prisma generate",
+    "seed": "node prisma/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "keywords": [],
   "author": "",

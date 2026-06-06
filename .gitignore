@@ -24,3 +24,4 @@ Thumbs.db
 
 # Arquivos de variáveis de ambiente (Caso você use um arquivo .env no futuro)
 .env
+/generated/prisma
